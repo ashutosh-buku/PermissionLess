@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
@@ -34,6 +35,12 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val isPhotoPickerAvailable = ActivityResultContracts.PickVisualMedia.isPhotoPickerAvailable()
+
+        if (!isPhotoPickerAvailable) {
+            Toast.makeText(activity, "Limit won't be applied as all files would be treated as document only", Toast.LENGTH_LONG).show()
+        }
 
         val imagePicker = registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(5)) { uris ->
             println(uris)
