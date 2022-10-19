@@ -12,6 +12,8 @@
     <string name="pick_multimedia">Select Multimedia</string>
     <string name="pick_gif">Select Gifs</string>
 
+    <string name="crash_app">Crash App</string>
+
     <string name="lorem_ipsum">
         Demo for Permissionless Photopicker for android 13. Kindly have media/ images/ gif available on your device to test this
     </string>

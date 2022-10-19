@@ -4,6 +4,7 @@
     package="com.ashu.permissionless">
 
     <application
+        android:name="com.ashu.permissionless.crash_handling.global.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -24,6 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:process=":error_handler"
+            android:name="com.ashu.permissionless.crash_handling.global.CrashActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
