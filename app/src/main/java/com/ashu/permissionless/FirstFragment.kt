@@ -42,50 +42,42 @@ class FirstFragment : Fragment() {
             Toast.makeText(activity, "Limit won't be applied as all files would be treated as document only", Toast.LENGTH_LONG).show()
         }
 
-        setOnClickListeners()
-
-    }
-
-    private fun setOnClickListeners() {
         val imagePicker = registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(5)) { uris ->
             println(uris)
         }
+
         val videoPicker = registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(5)) { uris ->
             println(uris)
         }
+
         val multimediaPicker = registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(15)) { uris ->
             println(uris)
         }
+
         val gifPicker = registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(5)) { uris ->
             println(uris)
         }
 
-        binding.apply {
-            // For images upto max 5
-            btnImage.setOnClickListener {
-                imagePicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-            }
-
-            // For videos upto max 5
-            btnVideo.setOnClickListener {
-                videoPicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.VideoOnly))
-            }
-
-            // For image and video, limit 15
-            btnMultimedia.setOnClickListener {
-                multimediaPicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageAndVideo))
-            }
-
-            // For GIFs only, limit 5
-            btnGif.setOnClickListener {
-                gifPicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.SingleMimeType("image/gif")))
-            }
-
-            btnCrash.setOnClickListener {
-                throw Error("Hello, I'm not Groot, I am a godamn Crash!")
-            }
-
+        // For images upto max 5
+        binding.btnImage.setOnClickListener {
+            imagePicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
+
+        // For videos upto max 5
+        binding.btnVideo.setOnClickListener {
+            videoPicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.VideoOnly))
+        }
+
+        // For image and video, limit 15
+        binding.btnMultimedia.setOnClickListener {
+            multimediaPicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageAndVideo))
+        }
+
+        // For GIFs only, limit 5
+        binding.btnGif.setOnClickListener {
+            gifPicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.SingleMimeType("image/gif")))
+        }
+
     }
 
     override fun onDestroyView() {
